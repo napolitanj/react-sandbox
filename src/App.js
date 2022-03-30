@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react'
+import Header from './components/Header'
+import Tasks from './components/Tasks'
 
-function App() {
+const App = () => {
+  const [taskList, functionToSetTasks] = useState([
+    {
+      id:1,
+      text: 'Doctors Apt',
+      day: 'Feb 5',
+      reminder:true,
+    },
+    {
+      id:2,
+      text: 'Meeting',
+      day: 'Feb 7',
+      reminder:true,
+    },
+    {
+      id:3,
+      text: 'Eat food',
+      day: 'Feb 24',
+      reminder:false,
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <Header />
+      <Tasks tasks={taskList}/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
