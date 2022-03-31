@@ -9,9 +9,6 @@ export default class AddTask extends Component {
             reminder: false,
         }
     }
-        setText = (e) => {console.log(e)}
-        setDate = (e) => {console.log(e)}
-        setReminder = (e) => {console.log(e)}
 
 
   render() {
@@ -19,17 +16,17 @@ export default class AddTask extends Component {
 
     const onSubmitFunction = (e) => {
         e.preventDefault()
-        
-        if(!this.text) {
+
+        if(this.state.text === '') {
             alert('Please add text')
             return
         }
         
-        submitTask(this.text,this.day,this.reminder)
+        submitTask(this.state)
 
-        this.setText()
-        this.setDate()
-        this.setReminder(false)
+        this.setState({text:''})
+        this.setState({date:''})
+        this.setState({reminder:false})
     }
 
     return (
@@ -38,19 +35,19 @@ export default class AddTask extends Component {
               <label>
                   Task
               </label>
-              <input type="text" placeholder="Add Task" value={this.text} onChange={(e) => this.setText(e.target.value)}></input>
+              <input type="text" placeholder="Add Task" value={this.state.text} onChange={(e) => this.setState({text:e.target.value})}></input>
           </div>
           <div>
               <label>
                   Date and Time
               </label>
-              <input type="text" placeholder="Add Day and Time" value={this.date} onChange={(e) => this.setDate(e.target.value)}></input>
+              <input type="text" placeholder="Add Day and Time" value={this.state.date} onChange={(e) => this.setState({date:e.target.value})}></input>
           </div>
           <div>
               <label>
                   Reminder
               </label>
-              <input type="checkbox" checker={this.reminder} value={this.reminder} onChange={(e) => this.setReminder(e.currentTarget.checked)}/>
+              <input type="checkbox" checked={this.reminder} value={this.state.reminder} onChange={(e) => this.setState({reminder:e.currentTarget.checked})}/>
           </div>
           <input type='submit' value='Save Task' />
       </form>
