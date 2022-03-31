@@ -23,10 +23,16 @@ const App = () => {
       reminder:false,
     }
   ])
+
+//Delete Tasks
+const deleteTask = (id) => {
+  console.log('delete', id)
+}
+
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={taskList}/>
+      <Tasks tasks={taskList} onDelete={deleteTask}/>
     </div>
   )
 }
