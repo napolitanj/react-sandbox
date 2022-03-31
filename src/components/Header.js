@@ -4,16 +4,11 @@ import Button from './Button'
 
 class Header extends Component {
     render() {
-        const whenClicked = (e) => {
-            console.log(e)
-        }
+        const {title, onAdd} = this.props
         return (
             <header>
-                <h1>{this.props.title}</h1>
-                <Button color='green' text='Add'/>
-                <Button color='blue' text='Subtract'/>
-                <Button color='red' text='Multiply'/>
-                <Button clickFunction={whenClicked} />
+                <h1>{title}</h1>
+                <Button color='green' text='Add New Task' clickFunction={onAdd}/>
 
             </header>
         )

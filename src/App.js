@@ -5,6 +5,7 @@ import AddTask from './components/AddTask'
 
 const App = () => {
   //functionToSetTasks = setTasks - review useState syntax
+  const [showAddTask, setShowAddTask] = useState(false)
   const [taskList, functionToSetTasks] = useState([
     {
       id:1,
@@ -26,7 +27,7 @@ const App = () => {
     }
   ])
 
-//Add Taske
+//Add Task
 const addTask = (task) => {
   console.log(task)
   const id = Math.floor(Math.random() * 10000)+1
@@ -44,10 +45,11 @@ const toggleReminder = (id) => {
   functionToSetTasks(taskList.map((task) => task.id === id ? {...task, reminder: !task.reminder} : task))
 }
 
+//for showAddTask && look up short way of doing ternary
   return (
     <div className='container'>
-      <Header />
-      <AddTask submitTask={addTask}/>
+      <Header title="Yo" onAdd={()=> setShowAddTask(!showAddTask)}/>
+      {showAddTask && <AddTask submitTask={addTask}/>}
       {taskList.length >0 ? 
       <Tasks tasks={taskList} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks'}
     </div>
