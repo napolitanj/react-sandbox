@@ -7,7 +7,7 @@ export default class Tasks extends Component {
         return (
             <>
             {tasks.map((task) => (
-            <Task key={task.id} text={task.text} day={task.day} id={task.id} onDelete={onDelete} onToggle={onToggle}/>
+            <Task key={task.id} text={task.text} day={task.day} id={task.id} reminder={task.reminder} onDelete={onDelete} onToggle={onToggle}/>
             ))}
             </>
         )
