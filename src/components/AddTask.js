@@ -15,8 +15,25 @@ export default class AddTask extends Component {
 
 
   render() {
+    const {submitTask} = this.props;
+
+    const onSubmitFunction = (e) => {
+        e.preventDefault()
+        
+        if(!this.text) {
+            alert('Please add text')
+            return
+        }
+        
+        submitTask(this.text,this.day,this.reminder)
+
+        this.setText()
+        this.setDate()
+        this.setReminder(false)
+    }
+
     return (
-      <form>
+      <form onSubmit={onSubmitFunction}>
           <div>
               <label>
                   Task
@@ -33,7 +50,7 @@ export default class AddTask extends Component {
               <label>
                   Reminder
               </label>
-              <input type="checkbox" value={this.reminder} onChange={(e) => this.setReminder(e.currentTarget.checked)}/>
+              <input type="checkbox" checker={this.reminder} value={this.reminder} onChange={(e) => this.setReminder(e.currentTarget.checked)}/>
           </div>
           <input type='submit' value='Save Task' />
       </form>
