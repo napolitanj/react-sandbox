@@ -29,11 +29,16 @@ const deleteTask = (id) => {
   functionToSetTasks(taskList.filter((task) => task.id !== id))
 }
 
+//Toggle Reminder
+const toggleReminder = (id) => {
+  console.log(id)
+}
+
   return (
     <div className='container'>
       <Header />
       {taskList.length >0 ? 
-      <Tasks tasks={taskList} onDelete={deleteTask}/> : 'No Tasks'}
+      <Tasks tasks={taskList} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks'}
     </div>
   )
 }
