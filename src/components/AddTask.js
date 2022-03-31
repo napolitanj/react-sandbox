@@ -5,7 +5,7 @@ export default class AddTask extends Component {
         super(props);
         this.state = {
             text: '',
-            date: '',
+            day: '',
             reminder: false,
         }
     }
@@ -25,7 +25,7 @@ export default class AddTask extends Component {
         submitTask(this.state)
 
         this.setState({text:''})
-        this.setState({date:''})
+        this.setState({day:''})
         this.setState({reminder:false})
     }
 
@@ -39,9 +39,9 @@ export default class AddTask extends Component {
           </div>
           <div>
               <label>
-                  Date and Time
+                  day and Time
               </label>
-              <input type="text" placeholder="Add Day and Time" value={this.state.date} onChange={(e) => this.setState({date:e.target.value})}></input>
+              <input type="text" placeholder="Add Day and Time" value={this.state.day} onChange={(e) => this.setState({day:e.target.value})}></input>
           </div>
           <div>
               <label>

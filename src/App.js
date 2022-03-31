@@ -4,6 +4,7 @@ import Tasks from './components/Tasks'
 import AddTask from './components/AddTask'
 
 const App = () => {
+  //functionToSetTasks = setTasks - review useState syntax
   const [taskList, functionToSetTasks] = useState([
     {
       id:1,
@@ -28,6 +29,9 @@ const App = () => {
 //Add Taske
 const addTask = (task) => {
   console.log(task)
+  const id = Math.floor(Math.random() * 10000)+1
+  const newTask = {id, ...task}
+  functionToSetTasks([...taskList, newTask])
 }
 
 //Delete Tasks
