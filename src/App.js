@@ -48,7 +48,7 @@ const toggleReminder = (id) => {
 //for showAddTask && look up short way of doing ternary
   return (
     <div className='container'>
-      <Header title="Yo" onAdd={()=> setShowAddTask(!showAddTask)}/>
+      <Header title="Yo" onAdd={()=> setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
       {showAddTask && <AddTask submitTask={addTask}/>}
       {taskList.length >0 ? 
       <Tasks tasks={taskList} onDelete={deleteTask} onToggle={toggleReminder}/> : 'No Tasks'}
